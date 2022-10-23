@@ -4,9 +4,6 @@
  * [100] 相同的树
  */
 
-#include <vector>
-using namespace std;
-
 struct TreeNode {
     int val;
     TreeNode *left;

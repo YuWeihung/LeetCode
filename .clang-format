@@ -6,5 +6,5 @@ TabWidth: 4
 AccessModifierOffset: -4
 ColumnLimit: 120
 AllowShortIfStatementsOnASingleLine: Never
-AllowShortBlocksOnASingleLine: Never
-AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty

@@ -8,3 +8,6 @@ ColumnLimit: 120
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
+BinPackArguments: false
+BinPackParameters: false
+AlignArrayOfStructures: Right

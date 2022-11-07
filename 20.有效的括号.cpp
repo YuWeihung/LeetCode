@@ -18,7 +18,11 @@ public:
             return false;
         }
         stack<char> stk;
-        unordered_map<char, char> pairs = {{')', '('}, {']', '['}, {'}', '{'}};
+        unordered_map<char, char> pairs = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}
+        };
         for (char ch : s) {
             // 如果是右括号，看是否与栈顶左括号匹配，匹配则出栈；如果是左括号，则入栈
             if (pairs.count(ch)) {

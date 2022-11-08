@@ -1,5 +1,6 @@
 #pragma once
 
+// 二叉树数据结构定义
 struct TreeNode {
     int val;
     TreeNode *left;

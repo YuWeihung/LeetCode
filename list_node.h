@@ -1,5 +1,6 @@
 #pragma once
 
+// 链表数据结构定义
 struct ListNode {
     int val;
     ListNode *next;

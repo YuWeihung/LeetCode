@@ -4,10 +4,12 @@ UseTab: Never
 IndentWidth: 4
 TabWidth: 4
 AccessModifierOffset: -4
-ColumnLimit: 120
+ColumnLimit: 100
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
-BinPackArguments: false
-BinPackParameters: false
 AlignArrayOfStructures: Right
+AlwaysBreakAfterReturnType: None
+IndentWrappedFunctionNames: true
+BinPackParameters: false
+AllowAllParametersOfDeclarationOnNextLine: false

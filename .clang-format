@@ -1,0 +1,15 @@
+BasedOnStyle: LLVM
+Language: Cpp
+UseTab: Never
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+ColumnLimit: 80
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AlignArrayOfStructures: Right
+AlwaysBreakAfterReturnType: None
+IndentWrappedFunctionNames: true
+BinPackParameters: false
+AllowAllParametersOfDeclarationOnNextLine: false

@@ -1,14 +1,11 @@
 /*
- * @lc app=leetcode.cn id=94 lang=cpp
+ * @lc app=leetcode.cn id=226 lang=cpp
  *
- * [94] 二叉树的中序遍历
+ * [226] 翻转二叉树
  */
-
 #include "tree_node.h"
-#include <vector>
 
 using namespace std;
-
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -24,19 +21,15 @@ using namespace std;
  */
 class Solution {
 public:
-    void inorder(TreeNode *root, vector<int> &res) {
+    TreeNode *invertTree(TreeNode *root) {
         if (root == nullptr) {
-            return;
+            return nullptr;
         }
-        inorder(root->left, res);
-        res.emplace_back(root->val);
-        inorder(root->right, res);
-    }
-
-    vector<int> inorderTraversal(TreeNode *root) {
-        vector<int> res;
-        inorder(root, res);
-        return res;
+        TreeNode *left = invertTree(root->left);
+        TreeNode *right = invertTree(root->right);
+        root->left = right;
+        root->right = left;
+        return root;
     }
 };
 // @lc code=end

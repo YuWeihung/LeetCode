@@ -1,11 +1,10 @@
 /*
- * @lc app=leetcode.cn id=94 lang=cpp
+ * @lc app=leetcode.cn id=543 lang=cpp
  *
- * [94] 二叉树的中序遍历
+ * [543] 二叉树的直径
  */
-
 #include "tree_node.h"
-#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,19 +23,20 @@ using namespace std;
  */
 class Solution {
 public:
-    void inorder(TreeNode *root, vector<int> &res) {
+    int ans;
+    int depth(TreeNode *root) {
         if (root == nullptr) {
-            return;
+            return 0;
         }
-        inorder(root->left, res);
-        res.emplace_back(root->val);
-        inorder(root->right, res);
+        int left = depth(root->left);
+        int right = depth(root->right);
+        ans = max(ans, left + right + 1);
+        return max(left, right) + 1;
     }
-
-    vector<int> inorderTraversal(TreeNode *root) {
-        vector<int> res;
-        inorder(root, res);
-        return res;
+    int diameterOfBinaryTree(TreeNode *root) {
+        ans = 1;
+        depth(root);
+        return ans - 1;
     }
 };
 // @lc code=end

@@ -4,7 +4,7 @@ UseTab: Never
 IndentWidth: 4
 TabWidth: 4
 AccessModifierOffset: -4
-ColumnLimit: 80
+ColumnLimit: 70
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty

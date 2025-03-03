@@ -11,18 +11,19 @@ using namespace std;
 class Solution {
 public:
     int trap(vector<int> &height) {
+        int n = height.size();
         int ans = 0;
-        int left = 0, right = height.size() - 1;
+        int left = 0, right = n - 1;
         int leftMax = 0, rightMax = 0;
-        while (left < right) {
-            leftMax = max(leftMax, height[left]);
-            rightMax = max(rightMax, height[right]);
+        while (left <= right) {
+            leftMax = max(height[left], leftMax);
+            rightMax = max(height[right], rightMax);
             if (leftMax < rightMax) {
                 ans += leftMax - height[left];
-                ++left;
+                left++;
             } else {
                 ans += rightMax - height[right];
-                --right;
+                right--;
             }
         }
         return ans;

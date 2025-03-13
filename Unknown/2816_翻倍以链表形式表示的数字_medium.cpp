@@ -1,11 +1,12 @@
 /*
- * @lc app=leetcode.cn id=206 lang=cpp
+ * @lc app=leetcode.cn id=2816 lang=cpp
  *
- * [206] 反转链表
+ * [2816] 翻倍以链表形式表示的数字
  */
 #include "list_node.h"
 
 using namespace std;
+
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -19,15 +20,19 @@ using namespace std;
  */
 class Solution {
 public:
-    ListNode *reverseList(ListNode *head) {
-        ListNode *prev = nullptr, *cur = head;
-        while (cur != nullptr) {
-            ListNode *next = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = next;
+    ListNode *doubleIt(ListNode *head) {
+        if (head->val > 4) {
+            head = new ListNode(0, head);
         }
-        return prev;
+        ListNode *cur = head;
+        while (cur != nullptr) {
+            cur->val = (cur->val * 2) % 10;
+            if (cur->next && cur->next->val > 4) {
+                cur->val++;
+            }
+            cur = cur->next;
+        }
+        return head;
     }
 };
 // @lc code=end

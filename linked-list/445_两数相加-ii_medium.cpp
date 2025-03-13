@@ -1,9 +1,8 @@
 /*
- * @lc app=leetcode.cn id=2 lang=cpp
+ * @lc app=leetcode.cn id=445 lang=cpp
  *
- * [2] 两数相加
+ * [445] 两数相加 II
  */
-
 #include "list_node.h"
 
 using namespace std;
@@ -21,7 +20,20 @@ using namespace std;
  */
 class Solution {
 public:
+    ListNode *reverseList(ListNode *head) {
+        ListNode *prev = nullptr, *cur = head;
+        while (cur != nullptr) {
+            ListNode *next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
+    }
+
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        l1 = reverseList(l1);
+        l2 = reverseList(l2);
         ListNode *dummy = new ListNode();
         ListNode *cur = dummy;
         int carry = 0;
@@ -38,6 +50,7 @@ public:
             cur = cur->next;
             carry /= 10;
         }
+        dummy->next = reverseList(dummy->next);
         return dummy->next;
     }
 };

@@ -1,10 +1,9 @@
 /*
- * @lc app=leetcode.cn id=234 lang=cpp
+ * @lc app=leetcode.cn id=143 lang=cpp
  *
- * [234] 回文链表
+ * [143] 重排链表
  */
 #include "list_node.h"
-#include <vector>
 
 using namespace std;
 
@@ -31,7 +30,7 @@ public:
     }
 
     ListNode *reverseList(ListNode *head) {
-        ListNode *prev = nullptr, *cur = head;
+        ListNode *cur = head, *prev = nullptr;
         while (cur != nullptr) {
             ListNode *next = cur->next;
             cur->next = prev;
@@ -41,18 +40,17 @@ public:
         return prev;
     }
 
-    bool isPalindrome(ListNode *head) {
+    void reorderList(ListNode *head) {
         ListNode *mid = middleNode(head);
-        mid = reverseList(mid);
-        ListNode *head2 = mid;
-        while (head2 != nullptr) {
-            if (head->val != head2->val) {
-                return false;
-            }
-            head = head->next;
-            head2 = head2->next;
+        ListNode *head2 = reverseList(mid);
+        while (head2->next != nullptr) {
+            ListNode *next = head->next;
+            ListNode *next2 = head2->next;
+            head->next = head2;
+            head2->next = next;
+            head = next;
+            head2 = next2;
         }
-        return true;
     }
 };
 // @lc code=end

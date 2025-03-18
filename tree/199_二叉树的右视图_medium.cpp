@@ -1,11 +1,13 @@
 /*
- * @lc app=leetcode.cn id=101 lang=cpp
+ * @lc app=leetcode.cn id=199 lang=cpp
  *
- * [101] 对称二叉树
+ * [199] 二叉树的右视图
  */
 #include "tree_node.h"
+#include <vector>
 
 using namespace std;
+
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -21,16 +23,22 @@ using namespace std;
  */
 class Solution {
 public:
-    bool check(TreeNode *left, TreeNode *right) {
-        if (left == nullptr || right == nullptr) {
-            return left == right;
+    vector<int> ans;
+
+    void dfs(TreeNode *node, int depth) {
+        if (node == nullptr) {
+            return;
         }
-        return left->val == right->val &&
-               check(left->left, right->right) &&
-               check(left->right, right->left);
+        if (depth == ans.size()) {
+            ans.push_back(node->val);
+        }
+        dfs(node->right, depth + 1);
+        dfs(node->left, depth + 1);
     }
-    bool isSymmetric(TreeNode *root) {
-        return check(root->left, root->right);
+
+    vector<int> rightSideView(TreeNode *root) {
+        dfs(root, 0);
+        return ans;
     }
 };
 // @lc code=end

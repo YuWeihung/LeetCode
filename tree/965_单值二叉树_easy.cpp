@@ -1,11 +1,13 @@
 /*
- * @lc app=leetcode.cn id=101 lang=cpp
+ * @lc app=leetcode.cn id=965 lang=cpp
  *
- * [101] 对称二叉树
+ * [965] 单值二叉树
  */
 #include "tree_node.h"
+#include <iostream>
 
 using namespace std;
+
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -21,16 +23,22 @@ using namespace std;
  */
 class Solution {
 public:
-    bool check(TreeNode *left, TreeNode *right) {
-        if (left == nullptr || right == nullptr) {
-            return left == right;
+    bool flag = true;
+    void dfs(TreeNode *node, int val) {
+        if (node == nullptr) {
+            return;
         }
-        return left->val == right->val &&
-               check(left->left, right->right) &&
-               check(left->right, right->left);
+        if (node->val != val) {
+            flag = false;
+            return;
+        }
+        dfs(node->left, val);
+        dfs(node->right, val);
     }
-    bool isSymmetric(TreeNode *root) {
-        return check(root->left, root->right);
+
+    bool isUnivalTree(TreeNode *root) {
+        dfs(root, root->val);
+        return flag;
     }
 };
 // @lc code=end

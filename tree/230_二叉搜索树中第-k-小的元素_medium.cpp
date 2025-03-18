@@ -1,11 +1,11 @@
 /*
- * @lc app=leetcode.cn id=101 lang=cpp
+ * @lc app=leetcode.cn id=230 lang=cpp
  *
- * [101] 对称二叉树
+ * [230] 二叉搜索树中第 K 小的元素
  */
 #include "tree_node.h"
-
 using namespace std;
+
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -21,16 +21,24 @@ using namespace std;
  */
 class Solution {
 public:
-    bool check(TreeNode *left, TreeNode *right) {
-        if (left == nullptr || right == nullptr) {
-            return left == right;
+    int ans, k;
+    void dfs(TreeNode *root) {
+        if (root == nullptr) {
+            return;
         }
-        return left->val == right->val &&
-               check(left->left, right->right) &&
-               check(left->right, right->left);
+        dfs(root->left);
+        k--;
+        if (k == 0) {
+            ans = root->val;
+            return;
+        }
+        dfs(root->right);
     }
-    bool isSymmetric(TreeNode *root) {
-        return check(root->left, root->right);
+
+    int kthSmallest(TreeNode *root, int k) {
+        this->k = k;
+        dfs(root);
+        return ans;
     }
 };
 // @lc code=end

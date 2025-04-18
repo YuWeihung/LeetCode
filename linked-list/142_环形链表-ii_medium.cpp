@@ -24,14 +24,18 @@ public:
             slow = slow->next;
             fast = fast->next->next;
             if (slow == fast) {
-                while (slow != head) {
-                    slow = slow->next;
-                    head = head->next;
-                }
-                return slow;
+                break;
             }
         }
-        return nullptr;
+        if (fast == nullptr || fast->next == nullptr) {
+            return nullptr;
+        }
+        fast = head;
+        while (slow != fast) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return fast;
     }
 };
 // @lc code=end

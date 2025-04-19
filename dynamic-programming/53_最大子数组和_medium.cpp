@@ -3,6 +3,7 @@
  *
  * [53] 最大子数组和
  */
+#include <algorithm>
 #include <climits>
 #include <vector>
 using namespace std;
@@ -12,15 +13,12 @@ class Solution {
 public:
     int maxSubArray(vector<int> &nums) {
         int n = nums.size();
-        int min_pre_sum = 0;
-        int pre_sum = 0;
-        int ans = INT_MIN;
-        for (int i = 0; i < n; i++) {
-            pre_sum += nums[i];
-            ans = max(ans, pre_sum - min_pre_sum);
-            min_pre_sum = min(min_pre_sum, pre_sum);
+        vector<int> f(n);
+        f[0] = nums[0];
+        for (int i = 1; i < n; i++) {
+            f[i] = max(f[i - 1], 0) + nums[i];
         }
-        return ans;
+        return *max_element(f.begin(), f.end());
     }
 };
 // @lc code=end
